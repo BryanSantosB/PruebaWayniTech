@@ -1,0 +1,547 @@
+.App{
+  background: #0F2027; 
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  padding: 20px;
+  color: white;
+  min-height: 100vh;
+}
+
+.contenedorProductoHome{
+  width: 80%;
+  padding-top: 20px;
+  margin: auto;
+}
+
+#titulo{
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/*COMPONENTE TABLA*/
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/*Paginación de tabla*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background-color: #0056b3;
+}
+
+/* Esquinas redondeadas para las celdas exteriores */
+th:first-child {
+  border-top-left-radius: 10px;
+}
+th:last-child {
+  border-top-right-radius: 10px;
+}
+tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.w-10 {
+  width: 10% !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
+.w-30 {
+  width: 30% !important;
+}
+
+.w-40 {
+  width: 40% !important;
+}
+
+.tdAcciones{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/*COMPONENTE BUSCADOR*/
+/* this is a recreation of twitter search in css */
+.form {
+  --input-text-color: #fff;
+  --input-bg-color: #283542;
+  --focus-input-bg-color: transparent;
+  --text-color: #949faa;
+  --active-color: #1b9bee;
+  --width-of-input: 250px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+}
+/* form style */
+.form {
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: var(--width-of-input);
+  position: relative;
+  isolation: isolate;
+}
+/* a fancy bg for showing background and border when focus. */
+.fancy-bg {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: var(--input-bg-color);
+  border-radius: 30px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+/* label styling */
+label {
+  width: 100%;
+  padding: 0.8em;
+  height: 40px;
+  padding-inline: var(--inline-padding-of-input);
+  display: flex;
+  align-items: center;
+}
+
+.search,.close-btn {
+  position: absolute;
+}
+/* styling search-icon */
+.search {
+  fill: var(--text-color);
+  left: var(--inline-padding-of-input);
+}
+/* svg -- size */
+svg {
+  width: 17px;
+  display: block;
+}
+/* styling of close button */
+.close-btn {
+  border: none;
+  right: var(--inline-padding-of-input);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 0.1em;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--active-color);
+  opacity: 0;
+  visibility: hidden;
+}
+/* styling of input */
+.input {
+  color: var(--input-text-color);
+  width: 100%;
+  margin-inline: min(2em,calc(var(--inline-padding-of-input) + var(--gap)));
+  background: none;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-color)
+}
+/* input background change in focus */
+.input:focus ~ .fancy-bg {
+  border: 1px solid var(--active-color);
+  background: var(--focus-input-bg-color);
+}
+/* search icon color change in focus */
+.input:focus ~ .search {
+  fill: var(--active-color);
+}
+/* showing close button when typing */
+.input:valid ~ .close-btn {
+  opacity: 1;
+  visibility: visible;
+}
+/* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
+}
+
+/*FORMULARIO ADD AND UPDATE*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  z-index: 999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.producto-form-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/*BOTÓN EDITAR*/
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80px; 
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: #007bff; 
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #0056b3; 
+  transition-duration: .3s;
+}
+
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px #0056b3; 
+}
+
+/*BOTÓN ELIMINAR*/
+.BtnEliminar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 75px; 
+  height: 40px;
+  border: none;
+  padding: 0px 12px;
+  background-color: #dc3545; 
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #b02a37; 
+  transition-duration: .3s;
+}
+
+.svgEliminar {
+  width: 13px;
+  position: absolute;
+  right: -3px;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.BtnEliminar:hover {
+  color: transparent;
+}
+
+.BtnEliminar:hover .svgEliminar {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.BtnEliminar:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px #b02a37; 
+}
+
+/*BOTÓN AGREGAR*/
+.button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: rgb(121, 250, 127);
+  border: none;
+  color: white;
+  position: relative;
+  width: 120px;
+  height: 45px;
+  transition: background-color 0.2s ease-in, all 0.15s ease-in;
+}
+
+.button::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: "Button";
+  width: 120px;
+  height: 45px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(5px, 5px);
+  background-color: rgb(5, 192, 5);
+  transition: all 0.15s ease-in;
+}
+
+.button:hover::after {
+  transform: translate(-5px, -5px);
+}
+
+.button:hover {
+  transform: translate(5px, 5px);
+}
+
+.button:active::after {
+  background-color: rgb(3, 197, 0);
+}
+
+/*COMPONENTE LOADER*/
+@-webkit-keyframes honeycomb {
+  0%,
+  20%,
+  80%,
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  30%,
+  70% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes honeycomb {
+  0%,
+  20%,
+  80%,
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  30%,
+  70% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.honeycomb {
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.honeycomb div {
+  -webkit-animation: honeycomb 2.1s infinite backwards;
+  animation: honeycomb 2.1s infinite backwards;
+  background: #f3f3f3;
+  height: 12px;
+  margin-top: 6px;
+  position: absolute;
+  width: 24px;
+}
+
+.honeycomb div:after, .honeycomb div:before {
+  content: '';
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.honeycomb div:after {
+  top: -6px;
+  border-bottom: 6px solid #f3f3f3;
+}
+
+.honeycomb div:before {
+  bottom: -6px;
+  border-top: 6px solid #f3f3f3;
+}
+
+.honeycomb div:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  left: -28px;
+  top: 0;
+}
+
+.honeycomb div:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  left: -14px;
+  top: 22px;
+}
+
+.honeycomb div:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  left: 14px;
+  top: 22px;
+}
+
+.honeycomb div:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  left: 28px;
+  top: 0;
+}
+
+.honeycomb div:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  left: 14px;
+  top: -22px;
+}
+
+.honeycomb div:nth-child(6) {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  left: -14px;
+  top: -22px;
+}
+
+.honeycomb div:nth-child(7) {
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+  left: 0;
+  top: 0;
+}
